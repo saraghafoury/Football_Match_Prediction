@@ -79,17 +79,26 @@ The following preprocessing steps were performed:
 
 Several new features were created from the previous ten matches of each club, including:
 
+## Feature Engineering Steps
+
 * Converting date columns to datetime format
-* Encoding categorical variables
-* Average goals scored
-* Average goals conceded
-* Goal difference
-* Average team rating
-* Average opponent rating
+* Sorting data chronologically to prevent leakage
+* Extracting year, month, day of week, and summer break indicator
+* Calculating rest days from previous matches
+* Encoding categorical variables (clubs, competition, cup game)
+* Encoding target variable (home/away/draw)
+* Average goals scored (last 10 matches)
+* Average goals conceded (last 10 matches)
+* Goal difference (home and away)
+* Average team rating (last 10 matches)
+* Average opponent rating (last 10 matches)
 * Rating difference between teams
 * Goal difference difference
-* Recent home performance
-* Recent away performance
+* Average rest days (last 10 matches)
+* Recent home match ratio
+* Recent cup match ratio
+* Feature selection with SelectKBest (top 50 features)
+* Saving engineered dataset
 
 ---
 
