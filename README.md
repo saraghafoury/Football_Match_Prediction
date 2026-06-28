@@ -87,14 +87,14 @@ Several new features were created from the previous ten matches of each club, in
 * Calculating rest days from previous matches
 * Encoding categorical variables (clubs, competition, cup game)
 * Encoding target variable (home/away/draw)
-* Average goals scored (last 10 matches)
-* Average goals conceded (last 10 matches)
+* Average goals scored 
+* Average goals conceded 
 * Goal difference (home and away)
-* Average team rating (last 10 matches)
-* Average opponent rating (last 10 matches)
+* Average team rating 
+* Average opponent rating 
 * Rating difference between teams
 * Goal difference difference
-* Average rest days (last 10 matches)
+* Average rest days 
 * Recent home match ratio
 * Recent cup match ratio
 * Feature selection with SelectKBest (top 50 features)
