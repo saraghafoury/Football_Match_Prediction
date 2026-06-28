@@ -98,7 +98,6 @@ Several new features were created from the previous ten matches of each club, in
 * Recent home match ratio
 * Recent cup match ratio
 * Feature selection with SelectKBest (top 50 features)
-* Saving engineered dataset
 
 ---
 
