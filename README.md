@@ -82,37 +82,41 @@ Several new features were created from the previous ten matches of each club, in
 ## Feature Engineering Steps
 
 * Converting date columns to datetime format
-* Sorting data chronologically to prevent leakage
+* Sorting data chronologically to strictly prevent data leakage
 * Extracting year, month, day of week, and summer break indicator
 * Calculating rest days from previous matches
-* Encoding categorical variables (clubs, competition, cup game)
-* Encoding target variable (home/away/draw)
-* Average goals scored 
-* Average goals conceded 
+* Dropping high-cardinality and noisy features (e.g., manager IDs)
+* Encoding target variable (home/away/draw) using Label Encoding
+* Average goals scored & conceded
 * Goal difference (home and away)
-* Average team rating 
-* Average opponent rating 
-* Rating difference between teams
-* Goal difference difference
-* Average rest days 
-* Recent home match ratio
-* Recent cup match ratio
-* Feature selection with SelectKBest (top 50 features)
+* Average team rating & Average opponent rating
+* **True Strength Metric** (Team rating / Opponent rating)
+* Rating difference & True Strength difference between teams
+* Average rest days & rest days difference
+* Recent home match ratio & Recent cup match ratio
+
+---
+
+## Data Leakage Prevention Strategy
+
+To ensure the model evaluation is scientifically valid and reflects real-world predictive capabilities, strict data leakage prevention measures were implemented:
+* **Chronological Split:** The dataset was split into training (80%) and testing (20%) sets chronologically (`shuffle=False`), preventing the model from learning from future matches.
+* **Safe Target Encoding:** Club and competition names were transformed using Target Encoding. The encoder was fitted **only** on the training set.
+* **Safe Imputation:** Missing values (NaNs) were imputed using the median, calculated **strictly** from the training set and then applied to the test set.
 
 ---
 
 ## Machine Learning Models
 
-Several classification algorithms were trained and compared, including:
+Several classification algorithms were trained and compared to find the most robust predictive model:
 
 * Logistic Regression
 * Decision Tree
 * Random Forest
-* Support Vector Machine (SVM)
-* XGBoost (optional)
-* LightGBM / CatBoost (optional)
+* K-Nearest Neighbors (KNN)
+* XGBoost Classifier (Best Performing Model)
 
-The best-performing model was selected based on classification performance.
+All models were trained on the safely preprocessed data to ensure fair comparison and accurate metrics.
 
 ---
 
@@ -154,7 +158,7 @@ Football-Match-Prediction/
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/Football-Match-Prediction.git
+git clone https://github.com/saraghafoury/Football-Match-Prediction.git
 ```
 
 Install the required packages:
